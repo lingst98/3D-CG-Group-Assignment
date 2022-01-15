@@ -7,8 +7,8 @@
 
 #define PI 3.141592653
 
-#define SCREEN_WIDTH	1280
-#define SCREEN_HEIGHT	720
+int SCREEN_WIDTH = 1280;
+int SCREEN_HEIGHT = 720;
 #define FPS	30
 
 float angle = 0.0;
@@ -25,17 +25,6 @@ void basketball(float ball_x_direction, float ball_y_direction)
 	glTranslatef(ball_x_direction, ball_y_direction, -6.0f);
 	glColor3f(1.0, 0.5, 0.0);
 	glutSolidSphere(0.2, 100, 100);
-}
-
-void blueSky()
-{
-	glColor3ub(0.0, 0.0, 255);
-	glBegin(GL_POLYGON);
-	glVertex2f(-3.0, 0);
-	glVertex2f(-3.0, 3.0);
-	glVertex2f(3.0, 3.0);
-	glVertex2f(3.0, 0);
-	glEnd();
 }
 
 void combinedCloud()
@@ -95,22 +84,16 @@ void combinedCloud()
 	glutSolidSphere(0.15, 100, 100);
 }
 
-void skyWithCloud()
-{
-	//blueSky();
-	combinedCloud();
-}
-
 void display()
 {
 	//This is the place that all the things get place
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clear the screen and filled with glClearColor
-
+	
 	glPushMatrix(); //Push the current state of the matrix to save
-	skyWithCloud();
+	combinedCloud();
 	basketball(ball_x_direction, ball_y_direction);
 	glPopMatrix(); //Undo the matrix transformation
-
+	gluLookAt(7.0, 7.0, 7.0, 0.0, 0.0, 0.0, 5.0, 1.0, 1.0); //Look at which direction
 	glFlush(); //Send all the vertex into the screen
 	glutSwapBuffers();
 }
@@ -138,13 +121,13 @@ void idle()
 		ball_y_direction += 0.05;
 	}
 	//After hit the first cloud, fall down
-	else if (ball_x_direction < 0.01 && ball_y_direction >= 1.0)
+	else if (ball_x_direction < 0.01 && ball_y_direction >= 0.9)
 	{
 		ball_x_direction += 0.02;
 		ball_y_direction -= 0.4;
 	}
 	//Bounce back
-	else if (ball_x_direction > 0.03 && ball_y_direction > 1.0)
+	else if (ball_x_direction > 0.03 && ball_y_direction >= 0.9)
 	{
 		ball_x_direction += 0.03;
 		ball_y_direction += 0.05;
@@ -162,12 +145,10 @@ void initGL()
 	//Setting up a camera for 2-dimension
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	//	glOrtho(-5, 5, -5, 5, 0.0001, 1000.0); //Setup the shape of camera -> Define the box shape || One of the box shape camera
 	gluPerspective(45.0, 1.0, 0.0001, 1000.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(7.0, 7.0, 7.0, 0.0, 0.0, 0.0, 5.0, 1.0, 1.0); //Look at which direction
-
+	
 	// lights
 	glEnable(GL_COLOR_MATERIAL); //This is a global transformatiion 
 	glEnable(GL_LIGHTING);
@@ -179,7 +160,8 @@ void initGL()
 	glEnable(GL_DEPTH_TEST);
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
 	glutInit(&argc, argv);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT); //Setup the window size

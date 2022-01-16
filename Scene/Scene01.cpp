@@ -264,19 +264,19 @@ void bBoard()
     glVertex3f(-0.6, 1.05, -0.4); //Left down corner
 
     //Pillar
-    // Right face (z = 0.5f)
+    // Right face
     glColor3f(1.0, 0.0, 0.0);
     glVertex3f(0.2, 0.8, -0.5); //Left Top corner
-    glVertex3f(0.6, 0.8, 0.5); //Right Top corner
-    glVertex3f(0.6, -1.9, 0.5); //Right down corner
+    glVertex3f(1.0, 1.0, 0.5); //Right Top corner
+    glVertex3f(1.0, -1.9, 0.5); //Right down corner
     glVertex3f(0.2, -2.0, 0.5); //Left down corner
 
-    // Left face (z = 0.5f)
+    // Left face
     glColor3f(1.0, 0.0, 0.0);
-    glVertex3f(0.2, 0.8, -0.5); //Left top corner
+    glVertex3f(-0.1, 1.0, -0.5); //Left top corner
     glVertex3f(0.2, 0.8, 0.5); //Right top corner
     glVertex3f(0.2, -2.0, 0.5); //Right down corner
-    glVertex3f(0.2, -2.0, -0.5); //Left down corner
+    glVertex3f(-0.1, -2.0, -0.5); //Left down corner
 
     //board
     //Top face

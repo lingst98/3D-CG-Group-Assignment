@@ -18,52 +18,6 @@ float mcEyeX = -0.8;
 float mcEyeBX = -0.75;
 int state = 1;
 
-void basketNetLine()
-{
-    glBegin(GL_LINES);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(0.0, 0.5, 0.0);
-    glEnd();
-}
-
-void netLineFrame()
-{
-    glBegin(GL_LINES);
-    glVertex3f(0.5, 0.0, 0.0);
-    glVertex3f(0.0, 0.5, 0.0);
-    glEnd();
-}
-
-void square()
-{
-    glBegin(GL_QUADS);
-    glVertex3f(2.0, 2.0, 0.0);
-    glVertex3f(0.0, 2.0, 0.0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(2.0, 0.0, 0.0);
-    glEnd();
-}
-
-void squarenet()
-{
-    glBegin(GL_QUADS);
-    glVertex3f(1.0, 1.0, 0.0);
-    glVertex3f(0.0, 1.0, 0.0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glVertex3f(1.0, 0.0, 0.0);
-    glEnd();
-}
-
-void rectangle()
-{
-    glBegin(GL_QUADS);
-    glVertex3f(0.0, 1.0, 0.0);
-    glVertex3f(-4.0, 1.0, 0.0);
-    glVertex3f(-4.0, 0.0, 0.0);
-    glVertex3f(0.0, 0.0, 0.0);
-    glEnd();
-}
-
 void initGL()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
